@@ -29,31 +29,54 @@ public class DBHelper extends SQLiteOpenHelper {
                 + COLUMN_ADDRESS + " TEXT NOT NULL "
                 + ")";
         db.execSQL(query);
+
+        query = "INSERT INTO " + TABLE_NAME + " VALUES('0',"
+                + "'Muklas Rahmanto',"
+                + "'08882679806',"
+                + "'Sabdodadi'"
+                + ")";
+        db.execSQL(query);
+
+        insert(db,"Muklas Rahmanto", "08882679806", "Sabdodadi, Bantul, Bantul, Yogyakarta");
+        insert(db,"Muklas Rahmanto", "08882679806", "Sabdodadi, Bantul, Bantul, Yogyakarta");
+        insert(db,"Muklas Rahmanto", "08882679806", "Sabdodadi, Bantul, Bantul, Yogyakarta");
+        insert(db,"Muklas Rahmanto", "08882679806", "Sabdodadi, Bantul, Bantul, Yogyakarta");
+        insert(db,"Muklas Rahmanto", "08882679806", "Sabdodadi, Bantul, Bantul, Yogyakarta");
+        insert(db,"Muklas Rahmanto", "08882679806", "Sabdodadi, Bantul, Bantul, Yogyakarta");
+        insert(db,"Muklas Rahmanto", "08882679806", "Sabdodadi, Bantul, Bantul, Yogyakarta");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        onCreate(db);
+//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+//        onCreate(db);
     }
 
-    public void insert(String name, String phone, String address) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "INSERT INTO " + TABLE_NAME + " VALUES("
+    public void insert(SQLiteDatabase db, String name, String phone, String address) {
+        String query = "INSERT INTO " + TABLE_NAME + "("+COLUMN_NAME+","+COLUMN_PHONE+","+COLUMN_ADDRESS+") VALUES("
                 + "'" + name + "',"
                 + "'" + phone + "',"
                 + "'" + address + "'"
                 + ")";
         db.execSQL(query);
+    }
+
+    public void update(int id, String name, String phone, String address) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET "
+                + "name='" + name + "',"
+                + "phone='" + phone + "',"
+                + "address='" + address + "'"
+                + " WHERE id='"+id+"'"
+                + ")";
+        db.execSQL(query);
         db.close();
     }
 
-    public void update(String name, String phone, String address) {
+    public void delete(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET "
-                + COLUMN_NAME + "='" + name + "', "
-                + COLUMN_PHONE + "='" + phone + "', "
-                + COLUMN_ADDRESS + "='" + address + "'"
+        String query = "DELETE FROM " + TABLE_NAME
+                + " WHERE id='"+id+"'"
                 + ")";
         db.execSQL(query);
         db.close();
