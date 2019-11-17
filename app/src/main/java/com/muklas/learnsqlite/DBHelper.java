@@ -48,8 +48,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-//        onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
     }
 
     public void insert(SQLiteDatabase db, String name, String phone, String address) {
@@ -67,18 +67,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "name='" + name + "',"
                 + "phone='" + phone + "',"
                 + "address='" + address + "'"
-                + " WHERE id='"+id+"'"
-                + ")";
+                + " WHERE id="+id;
         db.execSQL(query);
-        db.close();
     }
 
     public void delete(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME
-                + " WHERE id='"+id+"'"
-                + ")";
+                + " WHERE id="+id;
         db.execSQL(query);
-        db.close();
     }
 }
