@@ -60,7 +60,9 @@ public class BottomSheetAdd extends BottomSheetDialogFragment {
                     dbHelper.update(contact.getId(), name, phone, address);
                 }
                 Toast.makeText(getActivity(), "Berhasil", Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).loadData();
 
+                getDialog().dismiss();
             }
         });
 

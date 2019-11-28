@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void loadData(){
+    public void loadData(){
         ArrayList<Contact> list = new ArrayList<>();
         DBHelper dbHelper = new DBHelper(getApplicationContext());
         String query = "SELECT * FROM sqlite";

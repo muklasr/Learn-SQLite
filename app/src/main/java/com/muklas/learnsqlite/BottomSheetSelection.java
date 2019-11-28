@@ -49,8 +49,7 @@ public class BottomSheetSelection extends BottomSheetDialogFragment {
                 DBHelper dbHelper = new DBHelper(view.getContext());
                 dbHelper.delete(contact.getId());
                 Toast.makeText(getActivity(), "Berhasil", Toast.LENGTH_SHORT).show();
-//                MainActivity ma = new MainActivity();
-//                ma.adapter.notifyDataSetChanged();
+                ((MainActivity)getActivity()).loadData();
             }
         });
 
