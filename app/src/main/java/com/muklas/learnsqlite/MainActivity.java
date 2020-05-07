@@ -3,6 +3,7 @@ package com.muklas.learnsqlite;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ShareActionProvider;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -53,5 +54,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ListAdapter(list);
         recyclerView.setAdapter(adapter);
+    }
+
+    private void show(){
+        String namaSP = ShareActionProvider.DEFAULT_SHARE_HISTORY_FILE_NAME;
     }
 }
